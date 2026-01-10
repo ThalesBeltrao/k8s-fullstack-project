@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: thaleswillianbeltrao17/pj-ks8-backend:3
+        imagePullPolicy: IfNotPresent
+
+        ports:
+        - containerPort: 8000
+
+        # Variáveis de ambiente do banco
+        env:
+        - name: DB_HOST
+          value: mysql      # ou mysql-service se usar ClusterIP
+        - name: DB_NAME
+          value: cadastro
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: DB_PASSWORD
+
+        # Liveness: verifica se a API está viva
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          failureThreshold: 3
+
+        # Readiness: só recebe tráfego quando estiver pronta
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+
+        # Recursos
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+
