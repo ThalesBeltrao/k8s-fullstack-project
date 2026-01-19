@@ -22,6 +22,8 @@ app.add_middleware(
 def health():
     return {"status": "ok"}
 
+
+
 @app.post("/usuarios")
 def usuario(pessoa: Pessoa):
     criar_usuario(pessoa)
