@@ -97,7 +97,7 @@ Prova real da integração entre as camadas e a sobrevivência dos dados no banc
 
 ### 📁 Estrutura do Projeto
 Visualização da organização de diretórios adotada.
-![Estrutura do Repositório](./img/estrutura_repositório.png)
+![Estrutura do Repositório](./img/estrutura_repositorio.png)
 
 
 🚀 Como Executar
