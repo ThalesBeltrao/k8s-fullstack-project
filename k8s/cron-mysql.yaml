@@ -4,7 +4,7 @@ metadata:
   name: mysql-backup
 spec:
   
-  schedule: "15 19 * * *"   # todo dia às 02:00
+  schedule: "15 19 * * *"   # todo dia às 19:15
   timeZone: "America/Sao_Paulo"
   concurrencyPolicy: Forbid  # não permitem execuções simutaneas 
   successfulJobsHistoryLimit: 3
@@ -14,7 +14,7 @@ spec:
       backoffLimit: 1 # quantos pods ele cria quando um pod falhar
       template:
         spec:
-          restartPolicy: OnFailure # ele tenta mesmo em casa de falhas externas como rede essas coisas 
+          restartPolicy: OnFailure # ele tenta mesmo em casa de falhas externas como rede
           containers:
           - name: backup
             image: mysql:8.0

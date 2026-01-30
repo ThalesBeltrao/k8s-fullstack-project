@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: backend-service
 spec:
-  type: ClusterIP
+  type: ClusterIP # Service Padrao
   selector:
-    app: backend
+    app: backend  # selector para selecionar o deployment com o mesmo nome conectar ao service
   ports:
     - port: 8000
       targetPort: 8000
