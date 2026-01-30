@@ -58,6 +58,47 @@ Backend,"Python, FastAPI","Deployment, Service, HPA (pronto)"
 Database,MySQL 8.0,"StatefulSet, Headless Service, PVC"
 Infra/Ops,"Docker, K8s, Cert-Manager","Ingress, CronJob, Secret, ConfigMap"
 
+## 🖼️ Evidências de Implementação
+
+### 1. Orquestração e Infraestrutura
+Visualização do cluster multi-node e o estado atual de todos os recursos orquestrados.
+
+* **Nós do Cluster (Multi-node):**
+![Status dos Nós](./img/nodes.png)
+
+* **Pods em Execução (Self-healing & Réplicas):**
+![Status dos Pods](./img/pods.png)
+
+* **Serviços Internos (ClusterIP):**
+![Serviços do Kubernetes](./img/service.png)
+
+### 2. Rede e Segurança (Ingress & TLS)
+Configuração do ponto de entrada único e validação da camada de segurança SSL/TLS.
+
+* **Ingress Controller (Hostname: cadastrommc.com):**
+![Configuração de Ingress](./img/ingress.png)
+
+* **Certificado TLS (Self-signed via Cert-manager):**
+![Validação TLS](./img/tls.png)
+
+### 3. Persistência e Aplicação
+Prova real da integração entre as camadas e a sobrevivência dos dados no banco.
+
+* **Persistent Volume Claims (Storage):**
+![Volumes Persistentes](./img/pvc.png)
+
+* **Interface da Aplicação:**
+![Página de Cadastro](./img/cadastrommc.png)
+
+* **Dados Persistidos no MySQL:**
+![Query no Banco de Dados](./img/db_cadastro.png)
+
+---
+
+### 📁 Estrutura do Projeto
+Visualização da organização de diretórios adotada.
+![Estrutura do Repositório](./img/estrutura%20repositório.png)
+
 
 🚀 Como Executar
       1. Pré-requisitos: Cluster Kubernetes (Minikube/Kind) e Ingress Controller habilitado.
@@ -74,10 +115,6 @@ Monitoramento e Observabilidade com Prometheus e Grafana.
 Migração para ambiente Cloud Gerenciado (AWS EKS ou Google GKE).
 
 Observação Final: Este projeto demonstra a transição de uma aplicação simples para um ambiente orquestrado profissional, seguindo as melhores práticas da CNCF (Cloud Native Computing Foundation).
-
-
-
-
 
 
 
